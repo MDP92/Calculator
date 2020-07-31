@@ -138,7 +138,7 @@ class Calculator():
                 self.DisplayExpression()
                 self.DisplayRealTimeValue()
 
-        elif str(key) == "Key.enter":
+        elif (str(key) == "Key.enter"):
             self.DisplayFinalValue()
             self.buffer = []
 

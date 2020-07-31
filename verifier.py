@@ -43,7 +43,7 @@ class Verifier:
                 'Key.home':True,
                 'Key.up':True,
                 'Key.page_up':True,
-
+                
                 'Key.backspace':True,
                 'Key.shift':'shift'
              }
