@@ -39,7 +39,7 @@ class Calculator():
         self.closeBrackets = []
 
     def onPress(self, key):
-        # print("The pressed key is:", format(key)) --> Display the encoding of the buttons
+        #print("The pressed key is:", format(key)) --> Display the encoding of the buttons
 
         inputString = format(key)
         inputString = inputString.replace("'", "")
@@ -50,7 +50,7 @@ class Calculator():
                 inputString = Verifier.KeypadCast(inputString)
 
             ###################################
-            # Check of 4 particular condition #
+            # Check of 8 particular condition #
             ###################################
 
             # Add the bracket to the relevant list to allow the counting inside the expression
@@ -70,9 +70,53 @@ class Calculator():
 
             elif inputString == '*':
                 self.buffer.append(inputString)
-                # Max number of '*' allowed: 2; to calculate the exponentation
+                # Max number of '*' allowed: 2; to calculate the exponentiation
                 try:
                     if self.buffer[-1] == '*' and self.buffer[-2] == '*' and self.buffer[-3] == '*':
+                        del self.buffer[-1]
+                except IndexError:
+                    pass
+
+                self.DisplayExpression()
+
+            elif inputString == '+':
+                self.buffer.append(inputString)
+                # Max number of '+' allowed: 1
+                try:
+                    if self.buffer[-1] == '+' and self.buffer[-2] == '+':
+                        del self.buffer[-1]
+                except IndexError:
+                    pass
+
+                self.DisplayExpression()
+
+            elif inputString == '-':
+                self.buffer.append(inputString)
+                # Max number of '-' allowed: 1
+                try:
+                    if self.buffer[-1] == '-' and self.buffer[-2] == '-':
+                        del self.buffer[-1]
+                except IndexError:
+                    pass
+
+                self.DisplayExpression()
+
+            elif inputString == '/':
+                self.buffer.append(inputString)
+                # Max number of '/' allowed: 1; for the floating point numbers
+                try:
+                    if self.buffer[-1] == '/' and self.buffer[-2] == '/':
+                        del self.buffer[-1]
+                except IndexError:
+                    pass
+
+                self.DisplayExpression()
+
+            elif inputString == '.':
+                self.buffer.append(inputString)
+                # Max number of '.' allowed: 1; for the floating point numbers
+                try:
+                    if self.buffer[-1] == '.' and self.buffer[-2] == '.':
                         del self.buffer[-1]
                 except IndexError:
                     pass
@@ -113,6 +157,8 @@ class Calculator():
     def RunCalculator(self):
         print("Type an expression to start to calculate")
         print("Press ENTER to calculate the final value, BACKSPACE to delete the last inserted value and ESC to quit")
+        print("Type '.' for the floating point number, type '**' for the exponentiation notation")
+        print("The floating point results are rounded at 4 decimal digits")
         print("")
         with keyboard.Listener(
             on_press=self.onPress) as listener:
@@ -126,21 +172,21 @@ class Calculator():
 
     def DisplayRealTimeValue(self):
         try:
-            realtimeResult = eval(self.insertedString)
-            print(f"Real time result: {realtimeResult}")
+            realTimeResult = round(eval(self.insertedString),4)
+            print(f"Real time result: {realTimeResult}")
+            return realTimeResult
         except SyntaxError:
             print("Real time value not available, please complete the expression")
-        return realtimeResult
+
 
     def DisplayFinalValue(self):
         try:
-            finalResult = eval(self.insertedString)
+            finalResult = round(eval(self.insertedString),4)
             print("----------------------------------")
             print(f"Final expression: {self.insertedString}")
             print(f"Final result: {finalResult}")
-            print("Type an expression to calculate another one")
+            print("Type an expression to calculate it")
             print("----------------------------------")
             return finalResult
         except (SyntaxError, TypeError):
             print("Inserted expression not complete, try again")
-
