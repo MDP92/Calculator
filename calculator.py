@@ -130,6 +130,7 @@ class Calculator():
             print(f"Real time result: {realtimeResult}")
         except SyntaxError:
             print("Real time value not available, please complete the expression")
+        return realtimeResult
 
     def DisplayFinalValue(self):
         try:
@@ -139,6 +140,7 @@ class Calculator():
             print(f"Final result: {finalResult}")
             print("Type an expression to calculate another one")
             print("----------------------------------")
+            return finalResult
         except (SyntaxError, TypeError):
             print("Inserted expression not complete, try again")
 
