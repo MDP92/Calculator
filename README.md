@@ -2,17 +2,17 @@
 > This is a command-line calculator that calculate the real time value of the given expression
 > The results, if are a floating point numbers, are rounded at 4 decimal digits
 ### Requirements
-- Windows10
+- Windows10 (only because has not been tested on Linux and MacOs)
 - Pyhon 3.x (added to the PYTHONPATH to permit the automatic install of pynput)
 ### Clone
-> To clone the repository in the local machine https://github.com/MDP92/Calculator.git
+> To clone the repository in the local machine ```bashgit clone https://github.com/MDP92/Calculator.git```
 ### Usage
 - Clone the repository
 - Open a PowerShell
-- Move to the projet folder
-- Launch main.py
+- Move to the project folder
+- Launch ```bashmain.py```
 ### Tests(optional)
 - Clone the repository
 - Open a PowerShell
-- Move to the projet folder
-- Launch test.py -v
+- Move to the project folder
+- Launch ```bashpython test.py -v```
