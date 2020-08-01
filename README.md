@@ -5,14 +5,14 @@
 - Windows10 (only because has not been tested on Linux and MacOs)
 - Pyhon 3.x (added to the PYTHONPATH to permit the automatic install of pynput)
 ### Clone
-> To clone the repository in the local machine ```bashgit clone https://github.com/MDP92/Calculator.git```
+> To clone the repository in the local machine ```git clone https://github.com/MDP92/Calculator.git```
 ### Usage
 - Clone the repository
 - Open a PowerShell
 - Move to the project folder
-- Launch ```bashmain.py```
+- Launch ```main.py```
 ### Tests(optional)
 - Clone the repository
 - Open a PowerShell
 - Move to the project folder
-- Launch ```bashpython test.py -v```
+- Launch ```python test.py -v```
